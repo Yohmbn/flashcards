@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+
+const FlashcardInput = ({flashcard}) => {
 constructor(props) {
   super(props);
   this.state = {value: };
@@ -8,24 +10,24 @@ constructor(props) {
   this.handleSubmit = this.handleSubmit.bind(this);
 }
 
-handleChange(event) {
+const handleChange = (event) => {
   this.setState({value: event.target.value});
 }
 
-handleSubmit(event) {
+const handleSubmit = (event) => {
   alert('la reponse est ' + this.state.value);
   event.preventDefault();
 }
 
-render() {
+
   return (
     <form onSubmit={this.handleSubmit}>
       <label>
         choissisez la bonne réponse :
         <select value={this.state.value} onChange={this.handleChange}>
         {flashcard.options.map(option => {
-                         return <div><input type="radio" name="colors" value={option} /> {option}</div>
-                     })}
+          return <div><option value={option}>{option}</option></div>
+         })}
 
         </select>
       </label>
@@ -33,3 +35,4 @@ render() {
     </form>
   );
 }
+
