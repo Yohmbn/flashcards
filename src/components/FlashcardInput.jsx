@@ -23,11 +23,13 @@ render() {
       <label>
         choissisez la bonne réponse :
         <select value={this.state.value} onChange={this.handleChange}>
+        {flashcard.options.map(option => {
+                         return <div><input type="radio" name="colors" value={option} /> {option}</div>
+                     })}
 
         </select>
       </label>
       <input type="submit" value="Envoyer" />
     </form>
   );
-}
 }
