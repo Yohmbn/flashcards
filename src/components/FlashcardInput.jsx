@@ -1,38 +1,55 @@
 import React, { useState } from 'react'
 
 
-const FlashcardInput = ({flashcard}) => {
-constructor(props) {
-  super(props);
-  this.state = {value: };
+ const Flashcard = ({ flashcard }) => {
+  const [flip, setFlip] = useState(false)
+  const [answer, setAnswer] = useState("");
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-}
+  const handleSubmit = (event) => {
+    console.log(`
+      Answer: ${answer}
+    `);
 
-const handleChange = (event) => {
-  this.setState({value: event.target.value});
-}
+    event.preventDefault();
+  }
 
-const handleSubmit = (event) => {
-  alert('la reponse est ' + this.state.value);
-  event.preventDefault();
-}
+  const requiredValidator = (value) => {
+    return value ? "" : "This field is required";
+  }
 
 
-  return (
-    <form onSubmit={this.handleSubmit}>
-      <label>
-        choissisez la bonne réponse :
-        <select value={this.state.value} onChange={this.handleChange}>
-        {flashcard.options.map(option => {
-          return <div><option value={option}>{option}</option></div>
-         })}
 
-        </select>
-      </label>
-      <input type="submit" value="Envoyer" />
-    </form>
-  );
-}
+  //<div className="flashcard-option">{option}</div>
 
+     return (
+         <div className={`card ${flip ? 'flip' : ''}`} onClick={() => setFlip(!flip)}>
+             <div className="front">
+
+                 <form onSubmit={handleSubmit}><h1>{flashcard.question}</h1>
+
+              <label>
+                  Answer:
+                  <input
+                    name="Answer"
+                    type="Answer"
+                    value={answer}
+                    onChange={e => setAnswer(e.target.value)}
+                    required />
+                </label>
+
+
+
+
+                     <button  type="submit" variant="outlined">
+                      Check Answer
+              </button>
+              </form>
+
+
+             </div>
+             <div className="back">{flashcard.answer}</div>
+         </div>
+     )
+ }
+
+ export default Flashcard
