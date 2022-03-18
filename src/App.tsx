@@ -12,14 +12,14 @@ const SAMPLE_CARDS = [
 
   },
   {
-    id : 1,
+    id : 2,
     question: 'What is 4 + 4',
     answer : '8',
     options: ['2','3','5','8'],
 
   },
   {
-    id : 1,
+    id : 3,
     question: 'What is 5 + 5',
     answer : '10',
     options: ['2','3','5','10'],

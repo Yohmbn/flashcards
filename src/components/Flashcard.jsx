@@ -37,7 +37,7 @@ import React, { useState } from 'react'
                  <div className="flashcard-options">
                     <form onSubmit={handleSubmit}>
                      {flashcard.options.map(option => {
-                         return <div className="flashcard-option">{option}</div>
+                         return <div><input type="radio" name="colors" value={option} /> {option}</div>
                      })}
                      <button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
                       Check Answer
@@ -45,7 +45,7 @@ import React, { useState } from 'react'
                      </form>
                  </div>
              </div>
-             <div className="back">{flashcard.answer}</div>
+             <div className="back">The correct answer is <p>{flashcard.answer}</p></div>
          </div>
      )
  }
